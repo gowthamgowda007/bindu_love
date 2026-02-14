@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Bindu 💖</title>
+    <style>
+        :root {
+            --primary-pink: #ff85a2;
+            --secondary-pink: #fde2e4;
+            --deep-pink: #ff4d6d;
+            --bright-pink: #ff0055;
+            --white: #ffffff;
+            --soft-pink: #ffc2d1;
+            --gold: #ffd700;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--secondary-pink);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease;
+        }
+
+        /* Shake animation */
+        .shake {
+            animation: shake-animation 0.3s;
+        }
+
+        @keyframes shake-animation {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        .container {
+            position: relative;
+            width: 90%;
+            max-width: 450px;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(255, 133, 162, 0.3);
+            text-align: center;
+            z-index: 10;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-height: 95vh;
+            overflow-y: auto;
+        }
+
+        h1 {
+            color: var(--deep-pink);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .gif-container {
+            width: 100%;
+            height: 220px; 
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .gif-container img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 20px;
+            object-fit: contain;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            min-height: 150px;
+            position: relative;
+        }
+
+        button {
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            font-size: 1.1rem;
+        }
+
+        .btn-yes {
+            background-color: #4ade80;
+            color: white;
+            padding: 15px 40px;
+            box-shadow: 0 4px 15px rgba(74, 222, 128, 0.4);
+            z-index: 50;
+        }
+
+        .btn-no {
+            background-color: var(--primary-pink);
+            color: white;
+            padding: 10px 25px;
+            box-shadow: 0 4px 10px rgba(255, 133, 162, 0.3);
+            position: absolute;
+            white-space: nowrap;
+            z-index: 100;
+        }
+
+        #giftsPage {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .dashboard-section {
+            width: 100%;
+            background: #fffafa;
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid var(--soft-pink);
+            margin-bottom: 5px;
+        }
+
+        .power-bar-container {
+            width: 100%;
+            height: 15px;
+            background: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .power-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary-pink), var(--bright-pink));
+            transition: width 0.3s ease;
+        }
+
+        .spinner-container {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin: 10px auto;
+            border-radius: 50%;
+            border: 5px solid var(--primary-pink);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+        }
+
+        #spinner-arrow {
+            font-size: 1.5rem;
+            color: var(--deep-pink);
+            margin-bottom: -5px;
+        }
+
+        .gift-container-row {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            gap: 5px;
+        }
+
+        .gift-box-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .gift-box-item:hover { transform: scale(1.1); }
+
+        .gift-icon {
+            font-size: 2rem;
+            background: #fff0f3;
+            padding: 8px;
+            border-radius: 12px;
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .lock-icon {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            font-size: 0.9rem;
+        }
+
+        .gift-label {
+            font-size: 0.7rem;
+            color: var(--deep-pink);
+            font-weight: bold;
+        }
+
+        .btn-dirty {
+            background-color: var(--bright-pink);
+            color: white;
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            box-shadow: 0 4px 10px rgba(255, 0, 85, 0.3);
+            margin-top: 10px;
+            border-radius: 50px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(8px);
+        }
+
+        .message-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 25px;
+            width: 85%;
+            max-width: 400px;
+            text-align: center;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .challenge-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--soft-pink);
+            border-radius: 15px;
+            margin: 10px 0;
+            text-align: center;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .image-gallery img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid var(--secondary-pink);
+        }
+
+        .love-letter-paper {
+            background: #fffafa;
+            border: 2px dashed var(--primary-pink);
+            padding: 15px;
+            border-radius: 15px;
+            text-align: left;
+            line-height: 1.5;
+            color: #444;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .heart {
+            position: fixed;
+            color: var(--deep-pink);
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatUp 4s linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5) rotate(360deg); opacity: 0; }
+        }
+
+        .close-btn {
+            margin-top: 1rem;
+            background: var(--deep-pink);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+
+        .bottom-gif-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .bottom-gif-item img {
+            width: 100%;
+            border-radius: 12px;
+            max-height: 110px;
+            object-fit: contain;
+        }
+
+        .error-msg {
+            color: var(--bright-pink);
+            font-size: 0.8rem;
+            margin-top: -5px;
+            margin-bottom: 5px;
+            display: none;
+        }
+
+        .payment-card {
+            background: linear-gradient(135deg, #ff85a2 0%, #ff4d6d 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            text-align: left;
+            margin: 10px 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="proposalScreen">
+        <h1 id="mainQuestion">Will you be my Valentine, Bindu? 💖</h1>
+        <div class="gif-container">
+            <img id="mainGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHVmaG9kZHNhbHZncTl0OGs5Nm5nNTRjaXdwaTBtNzRxcGY1aTZycCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1JmGiBtqTuehfYxuy9/giphy.gif" alt="Proposal GIF">
+        </div>
+        <div class="btn-group">
+            <button class="btn-yes" id="yesBtn" onclick="handleYes()">YES! 💕</button>
+            <button class="btn-no" id="noBtn" onmouseover="handleNo()" onclick="handleNo()">No 😢</button>
+        </div>
+    </div>
+
+    <div class="container" id="giftsPage">
+        <h1 style="font-size: 1.5rem;">For My Queen Bindu! 👑</h1>
+
+        <div class="dashboard-section">
+            <p style="font-size: 0.8rem; font-weight: bold; color: var(--deep-pink);">Bindu's Happiness Meter:</p>
+            <div class="power-bar-container">
+                <div class="power-fill" id="powerFill"></div>
+            </div>
+            <button onclick="chargeLove()" style="font-size: 0.75rem; background: var(--soft-pink); padding: 5px 12px; border-radius: 10px;">Tap for Love! ❤️</button>
+        </div>
+
+        <div class="gift-container-row">
+            <div class="gift-box-item" onclick="startChallenge(1)">
+                <div class="gift-icon" id="icon1">📸<span class="lock-icon" id="lock1">🔒</span></div>
+                <div class="gift-label">Memories</div>
+            </div>
+            <div class="gift-box-item" onclick="startChallenge(2)">
+                <div class="gift-icon" id="icon2">💌<span class="lock-icon" id="lock2">🔒</span></div>
+                <div class="gift-label">Letter</div>
+            </div>
+            <div class="gift-box-item" onclick="startPaymentFlow()">
+                <div class="gift-icon" id="icon3">💳<span class="lock-icon" id="lock3">🔒</span></div>
+                <div class="gift-label">Surprise</div>
+            </div>
+        </div>
+
+        <div class="dashboard-section">
+            <p style="font-size: 0.8rem; font-weight: bold; color: var(--deep-pink);">Date Night Spinner 🎡</p>
+            <div id="spinner-arrow">▼</div>
+            <div class="spinner-container" id="spinner">
+                <p id="spinnerText" style="font-weight: bold; color: var(--primary-pink); font-size: 0.8rem; padding: 5px;">Spin me!</p>
+            </div>
+            <button style="background: var(--deep-pink); color: white; padding: 6px 15px; border-radius: 10px; font-size: 0.75rem; margin-top: 5px;" onclick="spinDate()">Generate Idea!</button>
+        </div>
+
+        <div class="bottom-gif-container">
+            <div class="bottom-gif-item"><img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bnNuMmV3aTh4d3o3cWJna2RmdnE2OG5mdm0ydmd1NXo0bDFlaG4wNyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/bpTL6wXRuMQpMIVduB/giphy.gif"></div>
+            <div class="bottom-gif-item"><img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3cmxlempvcWc3eTlvYWZhcGI2NHlhc2xnbTY4d3p3ajY5aGYya3p0YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/iJgoGwkqb1mmH1mES3/giphy.gif"></div>
+        </div>
+
+        <button class="btn-dirty" id="dirtyBtn" onclick="handleDirtyClick()">Dirty thing! 😈</button>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="handleOverlayClick(event)">
+        <div class="message-box" id="modalContent" onclick="event.stopPropagation()"></div>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const dirtyBtn = document.getElementById('dirtyBtn');
+        const overlay = document.getElementById('overlay');
+        const modalContent = document.getElementById('modalContent');
+        const powerFill = document.getElementById('powerFill');
+        const spinner = document.getElementById('spinner');
+        const spinnerText = document.getElementById('spinnerText');
+
+        let noCount = 0;
+        let dirtyCount = 0;
+        let yesScale = 1;
+        let powerLevel = 0;
+        let isSpinning = false;
+
+        const dateIdeas = ["Movie Night 🍿", "Dinner Date 🍷", "Long Drive 🚗", "Ice Cream Run 🍦", "Cook Together 🍳", "Star Gazing 🌌"];
+
+        const unlockedGifts = { 1: false, 2: false, 3: false };
+        const challenges = {
+            1: { q: "Secret key is carried by you... 🎒👠", a: "1029" },
+            2: { q: "Enter the code given for the valuable gift... 🎁💎", a: "4509" },
+            3: { pin: "88" } 
+        };
+
+        function handleNo() {
+            noCount++;
+            document.body.classList.add('shake');
+            setTimeout(() => document.body.classList.remove('shake'), 300);
+            
+            const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+            const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = Math.max(10, Math.random() * maxX) + 'px';
+            noBtn.style.top = Math.max(10, Math.random() * maxY) + 'px';
+
+            yesScale += 0.3;
+            yesBtn.style.transform = `scale(${yesScale})`;
+            
+            if (noCount >= 10) {
+                noBtn.style.display = "none";
+                document.getElementById('mainQuestion').innerText = "JUST SAY YES, BINDU! ❤️";
+            }
+        }
+
+        function handleYes() {
+            document.getElementById('proposalScreen').style.display = 'none';
+            document.getElementById('giftsPage').style.display = 'flex';
+            document.getElementById('bgMusic').play().catch(() => {});
+            startHearts();
+        }
+
+        function chargeLove() {
+            powerLevel = Math.min(powerLevel + 10, 100);
+            powerFill.style.width = powerLevel + '%';
+            if (powerLevel === 100) {
+                showMessage("Bindu is 100% Powered by Love! 💖✨");
+                powerLevel = 0;
+                setTimeout(() => powerFill.style.width = '0%', 2000);
+            }
+        }
+
+        function spinDate() {
+            if (isSpinning) return;
+            isSpinning = true;
+            const degrees = 1800 + Math.random() * 360;
+            spinner.style.transition = "transform 3s cubic-bezier(0.1, 0, 0.1, 1)";
+            spinner.style.transform = `rotate(${degrees}deg)`;
+            
+            setTimeout(() => {
+                const choice = dateIdeas[Math.floor(Math.random() * dateIdeas.length)];
+                spinnerText.innerText = choice;
+                spinnerText.style.transform = `rotate(-${degrees}deg)`;
+                showMessage("Our Next Date: " + choice + "! 😍");
+                isSpinning = false;
+            }, 3100);
+        }
+
+        function startChallenge(id) {
+            if (unlockedGifts[id]) { revealGift(id); return; }
+            modalContent.innerHTML = `
+                <h2 style="color: var(--deep-pink);">${id === 1 ? 'Mystery Box 🗝️' : 'Security Check 🛡️'}</h2>
+                <p style="margin: 15px 0; font-size: 0.95rem;">${challenges[id].q}</p>
+                <input type="text" id="passInput" class="challenge-input" placeholder="Enter Code..." autocomplete="off">
+                <p id="errCode" class="error-msg">Incorrect code. Try again! 🥺</p>
+                <button class="unlock-btn" onclick="verify(${id})">Unlock Gift 🔓</button>
+                <button class="close-btn" style="background:#ccc;" onclick="closeModal()">Cancel</button>
+            `;
+            overlay.style.display = 'flex';
+            setTimeout(() => document.getElementById('passInput').focus(), 100);
+        }
+
+        function verify(id) {
+            const input = document.getElementById('passInput').value.trim();
+            if (input === challenges[id].a) {
+                unlockedGifts[id] = true;
+                document.getElementById(`lock${id}`).style.display = 'none';
+                revealGift(id);
+            } else {
+                document.getElementById('passInput').style.borderColor = "var(--bright-pink)";
+                document.getElementById('errCode').style.display = "block";
+                document.getElementById('modalContent').classList.add('shake');
+                setTimeout(() => document.getElementById('modalContent').classList.remove('shake'), 300);
+            }
+        }
+
+        function startPaymentFlow() {
+            if (unlockedGifts[3]) { revealGift(3); return; }
+            modalContent.innerHTML = `
+                <h2 style="color: var(--deep-pink);">Pookie Pay 💳</h2>
+                <div class="payment-card">
+                    <p style="font-size: 0.6rem; opacity: 0.8;">BINDU GOLD CARD</p>
+                    <p style="font-size: 1.1rem; margin: 8px 0;">**** **** **** 1432</p>
+                    <p style="font-size: 0.8rem;">Payable: 1,000,000 Kisses</p>
+                </div>
+                <p style="font-size: 0.85rem; margin-bottom: 5px;">Enter Security PIN:</p>
+                <input type="password" id="pinInput" class="challenge-input" placeholder="PIN" autocomplete="off">
+                <p id="errPin" class="error-msg">Invalid PIN! 🤫</p>
+                <button class="unlock-btn" onclick="processPay()">Confirm Transaction 💸</button>
+                <button class="close-btn" style="background:#ccc;" onclick="closeModal()">Back</button>
+            `;
+            overlay.style.display = 'flex';
+            setTimeout(() => document.getElementById('pinInput').focus(), 100);
+        }
+
+        function processPay() {
+            const pin = document.getElementById('pinInput').value.trim();
+            if (pin === challenges[3].pin) {
+                unlockedGifts[3] = true;
+                document.getElementById(`lock3`).style.display = 'none';
+                revealGift(3);
+            } else {
+                document.getElementById('pinInput').style.borderColor = "var(--bright-pink)";
+                document.getElementById('errPin').style.display = "block";
+                document.getElementById('modalContent').classList.add('shake');
+                setTimeout(() => document.getElementById('modalContent').classList.remove('shake'), 300);
+            }
+        }
+
+        function revealGift(id) {
+            if (id === 1) {
+                let html = `<h2 style="color:var(--deep-pink);">Our Memories 📸</h2><div class="image-gallery">`;
+                for (let i = 10; i <= 15; i++) {
+                    html += `<img src="photo${i}.jpg" onerror="this.src='https://placehold.co/200x200/fde2e4/ff4d6d?text=photo${i}.jpg'">`;
+                }
+                html += `</div><button class="close-btn" onclick="closeModal()">Close Gallery</button>`;
+                modalContent.innerHTML = html;
+            } else if (id === 2) {
+                modalContent.innerHTML = `
+                    <h2 style="color:var(--deep-pink);">Letter for Bindu 💌</h2>
+                    <div class="love-letter-paper">
+                        <p><b>My dearest Bindu,</b></p>
+                        <p style="margin-top:8px;">From the moment you came into my life, my world quietly found its meaning. You are not just my wife—you are my safe place, my strength when I feel weak, and my calm in every storm.</p>
+                        <p style="margin-top:8px;">You take care of me in ways I don’t always know how to explain. You stand by me when I am not at my best, and that kind of love is rare and priceless. If I have ever hurt you, please know that it came from my flaws, never from a lack of love for you.</p>
+                        <p style="margin-top:8px;">Your happiness is my responsibility, and I promise to support you, push you forward, and hold your hand as you become everything you wish to be.</p>
+                        <p style="margin-top:8px;">Thank you for choosing me every day. Loving you is not something I do—it is who I am.</p>
+                        <p style="margin-top:15px; text-align: right; font-weight: bold;">Forever yours,<br>❤️</p>
+                    </div>
+                    <button class="close-btn" onclick="closeModal()">Close Letter</button>
+                `;
+            } else {
+                showMessage("Gift 3: Payment Success! ✅<br><br>You are now the lifetime owner of my heart and the CEO of our future! 💍❤️");
+            }
+            overlay.style.display = 'flex';
+        }
+
+        function handleDirtyClick() {
+            dirtyCount++;
+            if (dirtyCount < 3) {
+                const maxX = window.innerWidth - dirtyBtn.offsetWidth - 20;
+                const maxY = window.innerHeight - dirtyBtn.offsetHeight - 20;
+                dirtyBtn.style.position = 'fixed';
+                dirtyBtn.style.left = Math.max(10, Math.random() * maxX) + 'px';
+                dirtyBtn.style.top = Math.max(10, Math.random() * maxY) + 'px';
+            } else {
+                dirtyBtn.style.position = 'relative';
+                dirtyBtn.style.left = 'auto'; dirtyBtn.style.top = 'auto';
+                dirtyCount = 0;
+                showDirtyGallery();
+            }
+        }
+
+        function showDirtyGallery() {
+            modalContent.innerHTML = `
+                <h2 style="color: var(--deep-pink);">Eww Bindu! 🚿</h2>
+                <p style="margin:10px 0;">You're so dirty! Go take a bath right now!</p>
+                <div class="image-gallery" style="grid-template-columns: 1fr;">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2djazZrMGM5eWdydWVhMGRrdDBmZHluZW1kbGtrMTk0eW0zdGdkMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/q8TEi7UTxas92/giphy.gif">
+                </div>
+                <button class="close-btn" onclick="closeModal()">Okay, I'm Clean! ✨</button>
+            `;
+            overlay.style.display = 'flex';
+        }
+
+        function showMessage(msg) {
+            modalContent.innerHTML = `<p style="font-weight: bold; color: var(--deep-pink); line-height:1.4;">${msg}</p><button class="close-btn" onclick="closeModal()">Close</button>`;
+            overlay.style.display = 'flex';
+        }
+
+        function closeModal() { overlay.style.display = 'none'; }
+        function handleOverlayClick(e) { if (e.target === overlay) closeModal(); }
+
+        function startHearts() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = ['💖', '💗', '💓', '💕', '😻'][Math.floor(Math.random()*5)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 500);
+        }
+    </script>
+</body>
+</html>
