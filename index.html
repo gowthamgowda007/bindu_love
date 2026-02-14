@@ -36,6 +36,7 @@
             align-items: center;
             overflow-x: hidden;
             padding: 15px;
+            position: relative;
         }
 
         @keyframes gradientBG {
@@ -104,13 +105,13 @@
             object-fit: contain;
         }
 
-        .btn-group {
+        .btn-group-proposal {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 1.5rem;
-            min-height: 200px;
-            position: relative;
+            min-height: 220px;
+            padding-top: 10px;
         }
 
         button {
@@ -137,14 +138,14 @@
             color: var(--deep-pink);
             padding: 10px 25px;
             border: 2px solid var(--primary-pink);
-            position: fixed;
             white-space: nowrap;
             z-index: 1000;
             font-size: 0.9rem;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: left 0.2s ease, top 0.2s ease;
+            position: relative; /* Starts relative, switches to fixed on interaction */
         }
 
+        /* Dashboard Styles */
         #dashboard {
             display: none;
             flex-direction: column;
@@ -217,7 +218,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* SPIN WHEEL UI */
+        /* SPIN WHEEL */
         .spinner-container {
             position: relative;
             width: 180px;
@@ -244,11 +245,9 @@
             border-left: 15px solid transparent;
             border-right: 15px solid transparent;
             border-top: 25px solid var(--deep-pink);
-            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
         }
 
         #spinnerInner {
-            position: relative;
             width: 100%;
             height: 100%;
             border-radius: 50%;
@@ -261,26 +260,24 @@
                 #ffffff 300deg 360deg
             );
             transition: transform 4s cubic-bezier(0.15, 0, 0.15, 1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         #spinResult {
             position: absolute;
             z-index: 25;
             background: var(--white);
-            padding: 8px 12px;
-            border-radius: 15px;
+            padding: 10px 15px;
+            border-radius: 20px;
             font-weight: 800;
             color: var(--deep-pink);
             text-align: center;
-            font-size: 0.8rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-size: 0.85rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             max-width: 80%;
             border: 2px solid var(--soft-pink);
         }
 
+        /* Modal Redesign */
         .overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -297,12 +294,11 @@
             padding: 2.5rem 1.5rem;
             border-radius: 40px;
             width: 90%;
-            max-width: 400px;
+            max-width: 410px;
             text-align: center;
             max-height: 85vh;
             overflow-y: auto;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
         }
 
         .img-grid {
@@ -318,14 +314,14 @@
             object-fit: cover;
             border-radius: 18px;
             border: 3px solid #fff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .letter-content {
             background: #fffdf5;
             border: 2px dashed var(--primary-pink);
-            padding: 20px;
-            border-radius: 20px;
+            padding: 25px;
+            border-radius: 25px;
             text-align: left;
             line-height: 1.7;
             font-size: 0.95rem;
@@ -338,7 +334,7 @@
             border: 2px solid var(--soft-pink);
             border-radius: 20px;
             text-align: center;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 20px;
             outline: none;
             color: var(--deep-pink);
@@ -348,30 +344,16 @@
         .modal-btn {
             background: linear-gradient(135deg, var(--primary-pink), var(--deep-pink));
             color: white;
-            padding: 15px 30px;
+            padding: 16px 30px;
             border-radius: 50px;
             width: 100%;
             font-weight: bold;
-            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3);
+            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
         }
 
         .close-btn-premium {
-            margin-top: 2rem;
-            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
-            color: #444;
-            padding: 12px 30px;
-            border-radius: 50px;
-            width: 100%;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-        }
-
-        .close-btn-heart {
             margin-top: 1.5rem;
-            background: var(--deep-pink);
+            background: linear-gradient(135deg, var(--primary-pink), var(--deep-pink));
             color: white;
             padding: 15px 30px;
             border-radius: 50px;
@@ -379,22 +361,20 @@
             font-weight: bold;
             box-shadow: 0 10px 25px rgba(255, 0, 85, 0.2);
             text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
 
-        .dirty-gif-list img {
+        .close-btn-secondary {
+            margin-top: 1.5rem;
+            background: #f5f5f5;
+            color: #777;
+            padding: 12px 30px;
+            border-radius: 50px;
             width: 100%;
-            border-radius: 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .error-msg {
-            color: var(--bright-pink);
             font-weight: bold;
-            font-size: 0.85rem;
-            margin-top: -10px;
-            margin-bottom: 15px;
-            display: none;
+            text-transform: uppercase;
+            border: 1px solid #ddd;
         }
     </style>
 </head>
@@ -406,7 +386,7 @@
         <div class="gif-display">
             <img id="mainGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHVmaG9kZHNhbHZncTl0OGs5Nm5nNTRjaXdwaTBtNzRxcGY1aTZycCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1JmGiBtqTuehfYxuy9/giphy.gif" alt="Cat Proposal">
         </div>
-        <div class="btn-group">
+        <div class="btn-group-proposal">
             <button class="btn-yes" id="yesBtn" onclick="accept()">YES! 💕</button>
             <button class="btn-no" id="noBtn" onclick="reject()" onmouseover="reject()">No 😢</button>
         </div>
@@ -416,10 +396,12 @@
     <div class="container" id="dashboard">
         <h1>My Queen, Bindu! 👑</h1>
 
+        <!-- 1. Main GIF at top -->
         <div class="gif-display" style="height: 150px;">
             <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnNuMmV3aTh4d3o3cWJna2RmdnE2OG5mdm0ydmd1NXo0bDFlaG4wNyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/bpTL6wXRuMQpMIVduB/giphy.gif">
         </div>
 
+        <!-- 2. Happiness Meter -->
         <div class="card">
             <p style="font-size: 0.85rem; font-weight: bold; color: var(--deep-pink);">Bindu's Happiness meter:</p>
             <div class="happiness-bar">
@@ -428,6 +410,7 @@
             <button onclick="fillLove()" style="font-size: 0.75rem; background: var(--deep-pink); color: white; padding: 8px 18px; border-radius: 12px; font-weight: bold;">Send a Kiss! 💋</button>
         </div>
 
+        <!-- 3. Gifts -->
         <div class="gift-row">
             <div class="gift-item" onclick="askForCode(1)">
                 <div class="gift-circle" id="g1">📸<span class="lock" id="l1">🔒</span></div>
@@ -443,6 +426,7 @@
             </div>
         </div>
 
+        <!-- 4. Adventure Generator -->
         <div class="card">
             <p style="font-size: 0.85rem; font-weight: bold; color: var(--deep-pink);">Adventure Generator 🎡</p>
             <div class="spinner-container">
@@ -456,7 +440,7 @@
         <button onclick="showDirty()" style="background: var(--bright-pink); color: white; padding: 15px; border-radius: 50px; font-size: 0.9rem; margin-top: 10px; width: 100%; font-weight: bold;">Dirty thing! 😈</button>
     </div>
 
-    <!-- Modals -->
+    <!-- Modal Layout -->
     <div class="overlay" id="overlay">
         <div class="modal" id="modalContent"></div>
     </div>
@@ -480,7 +464,7 @@
         let spinning = false;
         let totalRotation = 0;
 
-        const dateIdeas = ["Movie Night 🍿", "Dinner Date 🍷", "Long Drive 🚗", "Ice Cream Run 🍦", "Star Gazing 🌌", "Picnic Date 🧺", "Spa Day 💆‍♀️", "Shopping Spree 🛍️", "Beach Walk 🏖️", "Bowling Night 🎳", "Amusement Park 🎡", "Coffee Date ☕"];
+        const dateIdeas = ["Movie Night 🍿", "Dinner Date 🍷", "Long Drive 🚗", "Ice Cream Run 🍦", "Star Gazing 🌌", "Picnic Date 🧺", "Spa Day 💆‍♀️", "Shopping Spree 🛍️", "Beach Walk 🏖️", "Bowling Night 🎳", "Amusement Park 🎡"];
         const noMsgs = ["Are you sure? 🥺", "Seriously? 🤨", "Please Bindu... 🙏", "Think again! 🍕", "I'll be sad... 😭", "Look at the big YES! 👈", "Don't do this 💔", "I'm crying... 😿", "Seriously? Please? 🥺"];
 
         const unlocked = { 1: false, 2: false, 3: false };
@@ -495,21 +479,26 @@
             document.body.appendChild(h);
             setTimeout(() => h.remove(), 7000);
         }
-        setInterval(spawnHearts, 1200);
+        setInterval(spawnHearts, 1500);
 
         function reject() {
             noCount++;
             
+            // Switch to fixed positioning to allow unrestricted movement on viewport
+            if (noBtn.style.position !== 'fixed') {
+                noBtn.style.position = 'fixed';
+            }
+
             const btnWidth = noBtn.offsetWidth || 100;
             const btnHeight = noBtn.offsetHeight || 40;
-            const padding = 30;
+            const padding = 50; // Keep it away from edges
             
-            // Fixed jump math - stays within screen viewport
+            // MATH to keep it strictly on screen
             const maxX = window.innerWidth - btnWidth - padding;
             const maxY = window.innerHeight - btnHeight - padding;
             
-            const x = Math.max(padding, Math.random() * maxX);
-            const y = Math.max(padding, Math.random() * maxY);
+            const x = Math.max(padding, Math.floor(Math.random() * maxX));
+            const y = Math.max(padding, Math.floor(Math.random() * maxY));
             
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
@@ -544,7 +533,7 @@
             if (spinning) return;
             spinning = true;
             
-            // Random rotations + extra 5 to 10 full turns
+            // Increase rotation every time
             const rotations = 1800 + Math.random() * 3600;
             totalRotation += rotations;
             
@@ -555,7 +544,7 @@
                 spinResult.innerHTML = pick;
                 popMessage("✨ Adventure Chosen! ✨<br><br><b style='font-size:1.5rem'>" + pick + "</b>");
                 spinning = false;
-            }, 3600);
+            }, 4000);
         }
 
         function askForCode(id) {
@@ -564,9 +553,9 @@
                 <h2 style="font-family:'Dancing Script'; font-size:2.2rem; color:var(--deep-pink)">Unlock Gift ${id} 🔒</h2>
                 <p style="margin:15px 0; color:#666; font-size: 0.9rem;">Enter your secret code, my Queen:</p>
                 <input type="text" id="giftCodeInput" class="code-input" placeholder="Secret Key">
-                <p id="errorHint" class="error-msg">Incorrect Code! 🥺</p>
+                <p id="errorHint" style="color:var(--bright-pink); font-weight:bold; display:none; margin-bottom:15px;">Incorrect Code! 🥺</p>
                 <button class="modal-btn" onclick="verifyCode(${id})">Unlock Surprise</button>
-                <button class="close-btn-premium" onclick="closeModal()">Back</button>
+                <button class="close-btn-secondary" onclick="closeModal()">Back</button>
             `;
             overlay.style.display = 'flex';
             setTimeout(() => document.getElementById('giftCodeInput').focus(), 150);
@@ -591,7 +580,7 @@
                 for(let i=10; i<=20; i++) {
                     h += `<img src="photo${i}.jpg" onerror="this.src='photo${i}.jpeg'; this.onerror=null;">`;
                 }
-                h += `</div><button class="close-btn-heart" onclick="closeModal()">Close Memories</button>`;
+                h += `</div><button class="close-btn-premium" onclick="closeModal()">Back to Dashboard</button>`;
                 modalContent.innerHTML = h;
             } else if (id === 2) {
                 modalContent.innerHTML = `
@@ -599,11 +588,11 @@
                     <div class="letter-content">
                         <p><b>My dearest Bindu,</b></p>
                         <p style="margin-top:10px;">From the moment you came into my life, my world quietly found its meaning. You are not just my wife—you are my safe place, my strength when I feel weak, and my calm in every storm.</p>
-                        <p style="margin-top:10px;">You stand by me when I am not at my best, and that kind of love is rare and priceless. If I have ever hurt you, unknowingly or knowingly, please know that it came from my flaws, never from a lack of love for you.</p>
+                        <p style="margin-top:10px;">You take care of me in ways I don’t always know how to explain. You stand by me when I am not at my best, and that kind of love is rare and priceless. If I have ever hurt you, knowingly or unknowingly, please know that it came from my flaws, never from a lack of love for you.</p>
                         <p style="margin-top:10px;">Thank you for choosing me every day. Loving you is not something I do—it is who I am.</p>
                         <p style="margin-top:20px; text-align: right; font-weight: bold; font-family: 'Dancing Script'; font-size: 1.4rem;">Forever yours,<br>❤️</p>
                     </div>
-                    <button class="close-btn-heart" onclick="closeModal()">Close Letter</button>
+                    <button class="close-btn-premium" onclick="closeModal()">Back to Dashboard</button>
                 `;
             } else {
                 popMessage("<span style='font-size:3rem'>✅</span><br>Payment Successful!<br><br>You are now the lifetime CEO of my heart! 💍❤️");
@@ -619,13 +608,13 @@
             ];
             let h = `<h2 style="font-family:'Dancing Script'; font-size:2.2rem; color:var(--deep-pink)">Eww Bindu! 🚿</h2><p style="margin-bottom:15px; color:#666;">Go take a bath, you're so dirty!</p><div class="dirty-gif-list">`;
             list.forEach(src => h += `<img src="${src}">`);
-            h += `</div><button class="close-btn-heart" onclick="closeModal()">I'm Clean Now! ✨</button>`;
+            h += `</div><button class="close-btn-premium" onclick="closeModal()">I'm Clean Now! ✨</button>`;
             modalContent.innerHTML = h;
             overlay.style.display = 'flex';
         }
 
         function popMessage(m) {
-            modalContent.innerHTML = `<p style="font-weight: 600; color: var(--deep-pink); font-size:1.1rem; line-height:1.5;">${m}</p><button class="close-btn-heart" onclick="closeModal()">Got it!</button>`;
+            modalContent.innerHTML = `<p style="font-weight: 600; color: var(--deep-pink); font-size:1.1rem; line-height:1.5;">${m}</p><button class="close-btn-premium" onclick="closeModal()">Got it!</button>`;
             overlay.style.display = 'flex';
         }
 
