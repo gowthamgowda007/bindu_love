@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Bindu 💖</title>
+    <title>For My Queen Bindu 💖</title>
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-pink: #ff85a2;
@@ -23,7 +25,7 @@
 
         body {
             background-color: var(--secondary-pink);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -60,11 +62,15 @@
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             max-height: 95vh;
             overflow-y: auto;
+            scrollbar-width: none;
         }
 
+        .container::-webkit-scrollbar { display: none; }
+
         h1 {
+            font-family: 'Dancing Script', cursive;
             color: var(--deep-pink);
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             margin-bottom: 1rem;
             line-height: 1.2;
         }
@@ -165,6 +171,7 @@
             justify-content: center;
             align-items: center;
             background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
         #spinner-arrow {
@@ -197,6 +204,7 @@
             border-radius: 12px;
             margin-bottom: 5px;
             position: relative;
+            box-shadow: 0 4px 10px rgba(255, 133, 162, 0.1);
         }
 
         .lock-icon {
@@ -318,7 +326,7 @@
         .bottom-gif-item img {
             width: 100%;
             border-radius: 12px;
-            max-height: 110px;
+            max-height: 150px;
             object-fit: contain;
         }
 
@@ -355,7 +363,7 @@
     </div>
 
     <div class="container" id="giftsPage">
-        <h1 style="font-size: 1.5rem;">For My Queen Bindu! 👑</h1>
+        <h1 style="font-size: 1.8rem; font-family: 'Dancing Script';">For My Queen Bindu! 👑</h1>
 
         <div class="dashboard-section">
             <p style="font-size: 0.8rem; font-weight: bold; color: var(--deep-pink);">Bindu's Happiness Meter:</p>
@@ -381,16 +389,16 @@
         </div>
 
         <div class="dashboard-section">
-            <p style="font-size: 0.8rem; font-weight: bold; color: var(--deep-pink);">Date Night Spinner 🎡</p>
+            <p style="font-size: 0.8rem; font-weight: bold; color: var(--deep-pink);">Adventure Generator 🎡</p>
             <div id="spinner-arrow">▼</div>
             <div class="spinner-container" id="spinner">
-                <p id="spinnerText" style="font-weight: bold; color: var(--primary-pink); font-size: 0.8rem; padding: 5px;">Spin me!</p>
+                <p id="spinnerText" style="font-weight: bold; color: var(--primary-pink); font-size: 0.8rem; padding: 5px; text-align: center;">Spin for a<br>Date Idea!</p>
             </div>
-            <button style="background: var(--deep-pink); color: white; padding: 6px 15px; border-radius: 10px; font-size: 0.75rem; margin-top: 5px;" onclick="spinDate()">Generate Idea!</button>
+            <button style="background: var(--deep-pink); color: white; padding: 6px 15px; border-radius: 10px; font-size: 0.75rem; margin-top: 5px;" onclick="spinDate()">Spin Wheel!</button>
         </div>
 
         <div class="bottom-gif-container">
-            <div class="bottom-gif-item"><img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bnNuMmV3aTh4d3o3cWJna2RmdnE2OG5mdm0ydmd1NXo0bDFlaG4wNyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/bpTL6wXRuMQpMIVduB/giphy.gif"></div>
+            <div class="bottom-gif-item"><img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHVmaG9kZHNhbHZncTl0OGs5Nm5nNTRjaXdwaTBtNzRxcGY1aTZycCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/bpTL6wXRuMQpMIVduB/giphy.gif"></div>
             <div class="bottom-gif-item"><img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3cmxlempvcWc3eTlvYWZhcGI2NHlhc2xnbTY4d3p3ajY5aGYya3p0YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/iJgoGwkqb1mmH1mES3/giphy.gif"></div>
         </div>
 
@@ -421,7 +429,15 @@
         let powerLevel = 0;
         let isSpinning = false;
 
-        const dateIdeas = ["Movie Night 🍿", "Dinner Date 🍷", "Long Drive 🚗", "Ice Cream Run 🍦", "Cook Together 🍳", "Star Gazing 🌌"];
+        // Expanded Date Ideas (18 Total)
+        const dateIdeas = [
+            "Movie Night 🍿", "Dinner Date 🍷", "Long Drive 🚗", 
+            "Ice Cream Run 🍦", "Cook Together 🍳", "Star Gazing 🌌",
+            "Shopping Spree 🛍️", "Picnic in the Park 🧺", "Amusement Park 🎡",
+            "Couple's Spa Day 💆‍♀️", "Beach Sunset 🏖️", "Surprise Gift Day 🎁",
+            "Arcade Games 🕹️", "Bowling Night 🎳", "Karaoke Night 🎤",
+            "Art Class 🎨", "Breakfast in Bed 🥞", "Weekend Getaway ✈️"
+        ];
 
         const unlockedGifts = { 1: false, 2: false, 3: false };
         const challenges = {
@@ -441,11 +457,11 @@
             noBtn.style.left = Math.max(10, Math.random() * maxX) + 'px';
             noBtn.style.top = Math.max(10, Math.random() * maxY) + 'px';
 
-            yesScale += 0.3;
+            // Continuously grow the Yes button
+            yesScale += 0.45;
             yesBtn.style.transform = `scale(${yesScale})`;
             
-            if (noCount >= 10) {
-                noBtn.style.display = "none";
+            if (noCount >= 5) {
                 document.getElementById('mainQuestion').innerText = "JUST SAY YES, BINDU! ❤️";
             }
         }
@@ -461,7 +477,7 @@
             powerLevel = Math.min(powerLevel + 10, 100);
             powerFill.style.width = powerLevel + '%';
             if (powerLevel === 100) {
-                showMessage("Bindu is 100% Powered by Love! 💖✨");
+                showMessage("Bindu is 100% Powered by Love! 💖✨<br>I'll love you forever!");
                 powerLevel = 0;
                 setTimeout(() => powerFill.style.width = '0%', 2000);
             }
@@ -470,28 +486,28 @@
         function spinDate() {
             if (isSpinning) return;
             isSpinning = true;
-            const degrees = 1800 + Math.random() * 360;
-            spinner.style.transition = "transform 3s cubic-bezier(0.1, 0, 0.1, 1)";
+            const degrees = 2160 + Math.random() * 360; // Extra rotations
+            spinner.style.transition = "transform 3.5s cubic-bezier(0.1, 0, 0.1, 1)";
             spinner.style.transform = `rotate(${degrees}deg)`;
             
             setTimeout(() => {
                 const choice = dateIdeas[Math.floor(Math.random() * dateIdeas.length)];
-                spinnerText.innerText = choice;
+                spinnerText.innerHTML = choice;
                 spinnerText.style.transform = `rotate(-${degrees}deg)`;
-                showMessage("Our Next Date: " + choice + "! 😍");
+                showMessage("Our Next Date Idea: <br><b style='font-size:1.3rem'>" + choice + "</b> 😍");
                 isSpinning = false;
-            }, 3100);
+            }, 3600);
         }
 
         function startChallenge(id) {
             if (unlockedGifts[id]) { revealGift(id); return; }
             modalContent.innerHTML = `
-                <h2 style="color: var(--deep-pink);">${id === 1 ? 'Mystery Box 🗝️' : 'Security Check 🛡️'}</h2>
+                <h2 style="color: var(--deep-pink); font-family: 'Dancing Script'; font-size: 2rem;">${id === 1 ? 'Mystery Box 🗝️' : 'Security Check 🛡️'}</h2>
                 <p style="margin: 15px 0; font-size: 0.95rem;">${challenges[id].q}</p>
                 <input type="text" id="passInput" class="challenge-input" placeholder="Enter Code..." autocomplete="off">
                 <p id="errCode" class="error-msg">Incorrect code. Try again! 🥺</p>
-                <button class="unlock-btn" onclick="verify(${id})">Unlock Gift 🔓</button>
-                <button class="close-btn" style="background:#ccc;" onclick="closeModal()">Cancel</button>
+                <button class="unlock-btn" onclick="verify(${id})" style="background: var(--primary-pink); color: white; width: 100%; padding: 12px; border-radius: 50px; font-weight: bold;">Unlock Gift 🔓</button>
+                <button class="close-btn" style="background:#eee; color: #666;" onclick="closeModal()">Cancel</button>
             `;
             overlay.style.display = 'flex';
             setTimeout(() => document.getElementById('passInput').focus(), 100);
@@ -514,7 +530,7 @@
         function startPaymentFlow() {
             if (unlockedGifts[3]) { revealGift(3); return; }
             modalContent.innerHTML = `
-                <h2 style="color: var(--deep-pink);">Pookie Pay 💳</h2>
+                <h2 style="color: var(--deep-pink); font-family: 'Dancing Script'; font-size: 2rem;">Pookie Pay 💳</h2>
                 <div class="payment-card">
                     <p style="font-size: 0.6rem; opacity: 0.8;">BINDU GOLD CARD</p>
                     <p style="font-size: 1.1rem; margin: 8px 0;">**** **** **** 1432</p>
@@ -523,8 +539,8 @@
                 <p style="font-size: 0.85rem; margin-bottom: 5px;">Enter Security PIN:</p>
                 <input type="password" id="pinInput" class="challenge-input" placeholder="PIN" autocomplete="off">
                 <p id="errPin" class="error-msg">Invalid PIN! 🤫</p>
-                <button class="unlock-btn" onclick="processPay()">Confirm Transaction 💸</button>
-                <button class="close-btn" style="background:#ccc;" onclick="closeModal()">Back</button>
+                <button class="unlock-btn" onclick="processPay()" style="background: var(--primary-pink); color: white; width: 100%; padding: 12px; border-radius: 50px; font-weight: bold;">Confirm Transaction 💸</button>
+                <button class="close-btn" style="background:#eee; color: #666;" onclick="closeModal()">Back</button>
             `;
             overlay.style.display = 'flex';
             setTimeout(() => document.getElementById('pinInput').focus(), 100);
@@ -546,22 +562,23 @@
 
         function revealGift(id) {
             if (id === 1) {
-                let html = `<h2 style="color:var(--deep-pink);">Our Memories 📸</h2><div class="image-gallery">`;
-                for (let i = 10; i <= 15; i++) {
-                    html += `<img src="photo${i}.jpg" onerror="this.src='https://placehold.co/200x200/fde2e4/ff4d6d?text=photo${i}.jpg'">`;
+                // Showing 16 photos (10 to 25) with handling for .jpg and .jpeg
+                let html = `<h2 style="color:var(--deep-pink); font-family: 'Dancing Script'; font-size: 2rem;">Our Memories 📸</h2><div class="image-gallery">`;
+                for (let i = 10; i <= 25; i++) {
+                    html += `<img src="photo${i}.jpg" onerror="if(!this.triedJpeg){this.triedJpeg=true; this.src='photo${i}.jpeg';} else {this.src='https://placehold.co/300x300/fde2e4/ff4d6d?text=photo${i}';}">`;
                 }
                 html += `</div><button class="close-btn" onclick="closeModal()">Close Gallery</button>`;
                 modalContent.innerHTML = html;
             } else if (id === 2) {
                 modalContent.innerHTML = `
-                    <h2 style="color:var(--deep-pink);">Letter for Bindu 💌</h2>
+                    <h2 style="color:var(--deep-pink); font-family: 'Dancing Script'; font-size: 2rem;">Letter for Bindu 💌</h2>
                     <div class="love-letter-paper">
                         <p><b>My dearest Bindu,</b></p>
                         <p style="margin-top:8px;">From the moment you came into my life, my world quietly found its meaning. You are not just my wife—you are my safe place, my strength when I feel weak, and my calm in every storm.</p>
-                        <p style="margin-top:8px;">You take care of me in ways I don’t always know how to explain. You stand by me when I am not at my best, and that kind of love is rare and priceless. If I have ever hurt you, please know that it came from my flaws, never from a lack of love for you.</p>
+                        <p style="margin-top:8px;">You take care of me in ways I don’t always know how to explain. You stand by me when I am not at my best, and that kind of love is rare and priceless. If I have ever hurt you, knowingly or unknowingly, please know that it came from my flaws, never from a lack of love for you.</p>
                         <p style="margin-top:8px;">Your happiness is my responsibility, and I promise to support you, push you forward, and hold your hand as you become everything you wish to be.</p>
                         <p style="margin-top:8px;">Thank you for choosing me every day. Loving you is not something I do—it is who I am.</p>
-                        <p style="margin-top:15px; text-align: right; font-weight: bold;">Forever yours,<br>❤️</p>
+                        <p style="margin-top:15px; text-align: right; font-weight: bold; font-family: 'Dancing Script'; font-size: 1.2rem;">Forever yours,<br>❤️</p>
                     </div>
                     <button class="close-btn" onclick="closeModal()">Close Letter</button>
                 `;
@@ -588,19 +605,33 @@
         }
 
         function showDirtyGallery() {
-            modalContent.innerHTML = `
-                <h2 style="color: var(--deep-pink);">Eww Bindu! 🚿</h2>
-                <p style="margin:10px 0;">You're so dirty! Go take a bath right now!</p>
-                <div class="image-gallery" style="grid-template-columns: 1fr;">
-                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2djazZrMGM5eWdydWVhMGRrdDBmZHluZW1kbGtrMTk0eW0zdGdkMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/q8TEi7UTxas92/giphy.gif">
-                </div>
-                <button class="close-btn" onclick="closeModal()">Okay, I'm Clean! ✨</button>
+            // Added 6 dirty GIFs for a total of 6 hilarious options
+            const dirtyGifs = [
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2djazZrMGM5eWdydWVhMGRrdDBmZHluZW1kbGtrMTk0eW0zdGdkMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/q8TEi7UTxas92/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3NneXZmODFhNmZpMmZ6ZzJ3ZGRwdHh2Z2JpOWs0OWt5eHR5ZmU0ZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/K7G37W15zK5O0/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3cmxlempvcWc3eTlvYWZhcGI2NHlhc2xnbTY4d3p3ajY5aGYya3p0YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/iJgoGwkqb1mmH1mES3/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3ZndmF6bGR5N2p5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5/1ahqfxbaxEVdC/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExazZnd29qYTN6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6Z3R6/GsPZ6HXOseLNm/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHJndnp6NHpxNHpxNHpxNHpxNHpxNHpxNHpxNHpxNHpxNHpxNHpx/L7rkDuvW40W7S/giphy.gif"
+            ];
+
+            let html = `
+                <h2 style="color: var(--deep-pink); font-family: 'Dancing Script'; font-size: 2.2rem;">Eww Bindu! 🚿</h2>
+                <p style="margin:10px 0; color: #666;">You're so dirty! Go take a bath right now!</p>
+                <div class="image-gallery" style="grid-template-columns: 1fr; gap: 20px; max-height: 400px; overflow-y: auto;">
             `;
+            
+            dirtyGifs.forEach(url => {
+                html += `<img src="${url}" style="width:100%; border-radius:15px;">`;
+            });
+
+            html += `</div><button class="close-btn" onclick="closeModal()">Okay, I'm Clean! ✨</button>`;
+            modalContent.innerHTML = html;
             overlay.style.display = 'flex';
         }
 
         function showMessage(msg) {
-            modalContent.innerHTML = `<p style="font-weight: bold; color: var(--deep-pink); line-height:1.4;">${msg}</p><button class="close-btn" onclick="closeModal()">Close</button>`;
+            modalContent.innerHTML = `<p style="font-weight: bold; color: var(--deep-pink); line-height:1.4; font-size: 1.1rem;">${msg}</p><button class="close-btn" onclick="closeModal()">Close</button>`;
             overlay.style.display = 'flex';
         }
 
